@@ -1,0 +1,7 @@
+Flask==0.8
+Jinja2==2.6
+Werkzeug==0.8.3
+gevent==0.13.6
+greenlet==0.3.4
+pydns==2.3.6
+wsgiref==0.1.2
