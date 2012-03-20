@@ -1,4 +1,4 @@
-from validemail import app, utils
+from emailpie import app, utils
 
 
 @app.route('/v1/check', methods=['GET'])

@@ -3,10 +3,13 @@ import re
 import gevent
 from gevent import monkey
 
+from DNS.Base import ServerError
+
+from emailpie import settings
+
 
 def mxlookup(domain):
     from DNS import Base
-    from DNS.Base import ServerError
 
     def dnslookup(name, qtype):
         """convenience routine to return just answer data for any query type"""
@@ -40,7 +43,7 @@ class EmailChecker(object):
     Given an email address, run a variety of checks on that email address.
     """
 
-    def __init__(self, email, _gevent=True):
+    def __init__(self, email, _gevent=settings.GEVENT_CHECKS):
         self.email = email
         self.errors = []
 
@@ -66,15 +69,13 @@ class EmailChecker(object):
         """
         if self._gevent:
             monkey.patch_all()
-            self.results = [gevent.spawn(check) for check in self.checks]
-            gevent.joinall(self.results)
+            results = [gevent.spawn(check) for check in self.checks]
+            gevent.joinall(results)
 
-            for result in self.results:
+            for result in results:
                 self.errors += result.value
         else:
-            self.results = [check() for check in self.checks]
-
-            for result in self.results:
+            for result in [check() for check in self.checks]:
                 self.errors += result
 
         return self.errors
@@ -99,7 +100,7 @@ class EmailChecker(object):
 
     def check_valid_mx_records(self):
         error = dict(
-            severity=5,
+            severity=7,
             message='No MX records found for the domain.'
         )
 
@@ -108,9 +109,10 @@ class EmailChecker(object):
         except IndexError:
             return [error]
 
-        mx_hosts = mxlookup(domain)
-
-        if len(mx_hosts) == 0:
+        try:
+            if len(mxlookup(domain)) == 0:
+                return [error]
+        except ServerError:
             return [error]
 
         return []

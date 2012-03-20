@@ -1,6 +1,6 @@
 from gevent.wsgi import WSGIServer
 
-from validemail import app
+from emailpie import app
 
 
 http_server = WSGIServer(('', 5000), app)

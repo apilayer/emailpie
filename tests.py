@@ -1,6 +1,6 @@
 import unittest
 
-from validemail import utils
+from emailpie import utils
 
 
 class TestParse(unittest.TestCase):
