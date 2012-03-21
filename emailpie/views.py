@@ -16,20 +16,17 @@ def check():
     email = request.args.get('email', None)
 
     response = dict(success=True, errors=[])
-    code = 200
 
     if not email:
         response['errors'] += [dict(
                     severity=10,
                     message='Please provide an email address.')]
-        code = 400
     else:
         validator = EmailChecker(email)
         response['errors'] = validator.validate()
-        print response['errors']
 
     for error in response['errors']:
-        if error['severity'] > 6:
+        if error['severity'] > 5:
             response['success'] = False
 
-    return simplejson.dumps(response), code#, 'application/json'
+    return simplejson.dumps(response)
