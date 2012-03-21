@@ -19,6 +19,12 @@ class TestParse(unittest.TestCase):
 
         self.assertTrue(errors)
 
+    def test_double_invalid_email(self):
+        validator = utils.EmailChecker('sdahjsdfh@@sssss')
+        errors = validator.validate()
+
+        self.assertTrue(errors)
+
     def test_invalid_mx_email(self):
         validator = utils.EmailChecker('bryan@example.com')
         errors = validator.validate()

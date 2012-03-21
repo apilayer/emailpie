@@ -49,6 +49,13 @@ class EmailChecker(object):
         self._gevent = _gevent
 
     @property
+    def domain(self):
+        try:
+            return self.email.split('@')[1]
+        except IndexError:
+            return None
+
+    @property
     def checks(self):
         """
         Collects all functions that start with `check_`.
@@ -84,6 +91,9 @@ class EmailChecker(object):
     ############
     
     def check_valid_email_string(self):
+        """
+        A simple regex based checker.
+        """
         from django.core.validators import validate_email
         from django.core.exceptions import ValidationError
 
@@ -97,18 +107,19 @@ class EmailChecker(object):
             )]
 
     def check_valid_mx_records(self):
+        """
+        Ensures that there are MX records for this domain.
+        """
         error = dict(
             severity=7,
             message='No MX records found for the domain.'
         )
 
-        try:
-            domain = self.email.split('@')[1]
-        except IndexError:
+        if not self.domain:
             return [error]
 
         try:
-            if len(mxlookup(domain)) == 0:
+            if len(mxlookup(self.domain)) == 0:
                 return [error]
         except ServerError:
             return [error]

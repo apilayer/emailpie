@@ -1,6 +1,7 @@
 import simplejson
 
-from emailpie import app, utils
+from emailpie import app
+from emailpie.utils import EmailChecker
 
 from flask import request
 
@@ -23,8 +24,9 @@ def check():
                     message='Please provide an email address.')]
         code = 400
     else:
-        validator = utils.EmailChecker('bryan@bryanhelmig.com')
+        validator = EmailChecker(email)
         response['errors'] = validator.validate()
+        print response['errors']
 
     for error in response['errors']:
         if error['severity'] > 6:
