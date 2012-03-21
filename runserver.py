@@ -9,7 +9,7 @@ from emailpie import app
 
 @werkzeug.serving.run_with_reloader
 def runServer():
-    ws = gevent.wsgi.WSGIServer(('', 5000), app)
+    ws = gevent.wsgi.WSGIServer(('', 24259), app)
     ws.serve_forever()
 
 runServer()
