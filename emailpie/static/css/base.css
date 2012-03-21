@@ -242,8 +242,8 @@ caption {
   font-family: 'Coming Soon', cursive; }
 
 body {
-  background: #f3f3f3;
-  color: #666; }
+  background: transparent url("../img/square_bg.png") repeat;
+  color: #555; }
 
 .wrapper {
   max-width: 500px;
@@ -265,7 +265,7 @@ body {
   .wrapper p {
     text-align: center; }
   .wrapper .well {
-    background: #e7e7e7;
+    background: #f3f3f3;
     padding: 24px 48px 12px;
     border: 1px solid #ccc;
     -moz-border-radius: 6px;
