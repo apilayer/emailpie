@@ -1,7 +1,15 @@
-from gevent.wsgi import WSGIServer
+from gevent import monkey
+monkey.patch_all()
+
+import gevent.wsgi
+import werkzeug.serving
 
 from emailpie import app
 
 
-http_server = WSGIServer(('', 5000), app)
-http_server.serve_forever()
+@werkzeug.serving.run_with_reloader
+def runServer():
+    ws = gevent.wsgi.WSGIServer(('', 5000), app)
+    ws.serve_forever()
+
+runServer()

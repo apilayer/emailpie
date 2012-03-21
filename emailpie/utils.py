@@ -1,7 +1,6 @@
 import re
 
 import gevent
-from gevent import monkey
 
 from DNS.Base import ServerError
 
@@ -68,7 +67,6 @@ class EmailChecker(object):
             4. Condense and return each error.
         """
         if self._gevent:
-            monkey.patch_all()
             results = [gevent.spawn(check) for check in self.checks]
             gevent.joinall(results)
 
