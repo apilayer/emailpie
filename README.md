@@ -14,7 +14,9 @@ Give us an email and we make sure its legit. If not, you'll find out why.
 
 ### Install/Usage
 
-1. `mkvirtualenv emailpie`
-2. `pip install -r requirements`
-3. `python rundev.py`
-4. Visit http://localhost:5000/v1/check?email=test@gmail.com
+1. `git clone git@github.com:bryanhelmig/emailpie.git`
+2. `cd emailpie`
+3. `mkvirtualenv emailpie`
+4. `pip install -r requirements`
+5. `python rundev.py`
+6. Visit http://localhost:5000/v1/check?email=test@gmail.com
