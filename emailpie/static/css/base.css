@@ -238,7 +238,7 @@ tfoot {
 caption {
   background: #eee; }
 
-.fancy, .wrapper h2 {
+.fancy, .wrapper h2, .wrapper h3, .wrapper h4 {
   font-family: 'Coming Soon', cursive; }
 
 body {
@@ -258,8 +258,18 @@ body {
   .wrapper .gist {
     font-size: 12px; }
   .wrapper h2 {
+    margin-top: 75px; }
+  .wrapper h2, .wrapper h3, .wrapper h4 {
     text-align: center;
-    margin-top: 75px;
     text-shadow: 1px 1px white; }
   .wrapper p {
     text-align: center; }
+  .wrapper .well {
+    background: #e7e7e7;
+    padding: 24px 48px 12px;
+    border: 1px solid #ccc;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+    margin: 0 auto;
+    width: 230px; }

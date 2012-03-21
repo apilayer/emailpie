@@ -30,13 +30,25 @@ body {
   }
 
   h2 {
-    @extend .fancy;
-    text-align:center;
     margin-top:75px;
+  }
+
+  h2, h3, h4 {
+    text-align:center;
     text-shadow:1px 1px white;
+    @extend .fancy;
   }
 
   p {
     text-align:center;
+  }
+
+  .well {
+    background:#e7e7e7;
+    padding:24px 48px 12px;
+    border:1px solid #ccc;
+    @include border-radius(6px);
+    margin:0 auto;
+    width:230px;
   }
 }
