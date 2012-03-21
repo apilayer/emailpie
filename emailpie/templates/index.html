@@ -1,0 +1,50 @@
+<html>
+<head>
+  <title>EmailPie - A Simple API for Crazy Simple Email Validation</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/base.css') }}">
+  <link href='http://fonts.googleapis.com/css?family=Coming+Soon' rel='stylesheet' type='text/css'>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="header">
+    <img src="{{ url_for('static', filename='img/email.png') }}" alt="">
+    <h2 class="fancy">Email Pie</h2>
+  </div>
+
+  <p>Email Pie is a wonderful little JSON API that gives you a simple way to validate email addresses. We'll let you know if that email address is legit or not.</p>
+
+
+  <h2>How?</h2>
+
+  <p>Well, first we make sure the email is formatted correctly. Catching things like invalid characters or no @ signs. Then, we make sure that the domain is configured to collect email. Finally, we check for common misspellings.</p>
+
+
+  <h2>How much?</h2>
+
+  <p>It's free for now, but we limit API calls to 1800/hour. Or, <a href="https://github.com/bryanhelmig/emailpie">run your own</a>.</p>
+
+
+  <h2>Example Code</h2>
+  <p>We strive to make our service very, very easy to use. Try some of these examples below for whatever your favorite language.</p>
+
+
+  <h2>Python</h2>
+  <script src="https://gist.github.com/2143961.js?file=python.py"></script>
+
+
+  <h2>Ruby</h2>
+  <script src="https://gist.github.com/2143961.js?file=ruby.rb"></script>
+
+
+  <h2>PHP</h2>
+  <script src="https://gist.github.com/2143961.js?file=php.php"></script>
+
+
+  <h2>Sample Responses</h2>
+  <script src="https://gist.github.com/2143961.js?file=examples.js"></script>
+
+</div>
+
+</body>
+</html>

@@ -40,11 +40,15 @@ def mxlookup(domain):
 class EmailChecker(object):
     """
     Given an email address, run a variety of checks on that email address.
+
+    A check is any method starting with `check_` that returns a list of errors.
+    Errors are dictionaries with a message (str) and severity (int) key.
     """
 
     def __init__(self, email, _gevent=settings.GEVENT_CHECKS):
         self.email = email
         self.errors = []
+        self.mx_records = None
 
         self._gevent = _gevent
 
@@ -61,8 +65,20 @@ class EmailChecker(object):
 
     def didyoumean(self):
         from emailpie.spelling import correct
-        items = self.domain.split('.')
-        return '{0}@{1}'.format(self.username, '.'.join(map(correct, items)))
+
+        if self.domain:
+            items = self.domain.split('.')
+
+            suggestion = '{0}@{1}'.format(
+                self.username,
+                '.'.join(map(correct, items))
+            )
+
+            if suggestion == self.email:
+                return None
+            return suggestion
+
+        return None
 
     @property
     def checks(self):
@@ -84,7 +100,7 @@ class EmailChecker(object):
         """
         if self._gevent:
             results = [gevent.spawn(check) for check in self.checks]
-            gevent.joinall(results)
+            gevent.joinall(results, timeout=7)
 
             for result in results:
                 if result.value:
@@ -129,9 +145,13 @@ class EmailChecker(object):
             return [error]
 
         try:
-            if len(mxlookup(self.domain)) == 0:
+            self.mx_records = mxlookup(self.domain)
+            if len(self.mx_records) == 0:
                 return [error]
         except ServerError:
             return [error]
 
+        return []
+
+    def check_nothing(self):
         return []

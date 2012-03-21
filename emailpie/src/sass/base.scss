@@ -1,0 +1,42 @@
+@import "mixins";
+@import "reset";
+
+.fancy {
+    font-family: 'Coming Soon', cursive;
+}
+
+body {
+  background:#f3f3f3;
+  color:#666;
+}
+
+.wrapper {
+  max-width:500px;
+  margin:0 auto;
+  padding:30px 15px;
+
+  .header {
+    text-align:center;
+    padding-bottom:15px;
+
+    h2 {
+      font-size:32px;
+      margin-top:0;
+    }
+  }
+
+  .gist {
+    font-size:12px;
+  }
+
+  h2 {
+    @extend .fancy;
+    text-align:center;
+    margin-top:75px;
+    text-shadow:1px 1px white;
+  }
+
+  p {
+    text-align:center;
+  }
+}

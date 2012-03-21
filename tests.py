@@ -5,7 +5,7 @@ import unittest
 
 from emailpie import utils
 from emailpie.spelling import correct
-
+from emailpie.throttle import should_be_throttled, reset_throttle
 
 class TestParse(unittest.TestCase):
     def test_good_email(self):
@@ -49,6 +49,16 @@ class SpellingTest(unittest.TestCase):
         self.assertEquals('yahoo', correct('uahoo'))
         self.assertEquals('sakjfh', correct('sakjfh'))
         self.assertEquals('guess', correct('guess'))
+
+
+class ThrottleTest(unittest.TestCase):
+    def test_throttle(self):
+        for x in range(100):
+            self.assertFalse(should_be_throttled('mykey'))
+
+        self.assertTrue(should_be_throttled('mykey', LIMIT=50))
+
+        reset_throttle('mykey')
 
 
 if __name__ == '__main__':
