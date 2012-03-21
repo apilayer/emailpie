@@ -15,7 +15,7 @@ def docs():
 def check():
     email = request.args.get('email', None)
 
-    response = dict(success=True, errors=[])
+    response = dict(success=True, errors=[], didyoumean=None)
 
     if not email:
         response['errors'] += [dict(
@@ -24,6 +24,7 @@ def check():
     else:
         validator = EmailChecker(email)
         response['errors'] = validator.validate()
+        response['didyoumean'] = validator.didyoumean()
 
     for error in response['errors']:
         if error['severity'] > 5:

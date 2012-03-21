@@ -49,11 +49,20 @@ class EmailChecker(object):
         self._gevent = _gevent
 
     @property
+    def username(self):
+        return self.email.split('@')[0]
+
+    @property
     def domain(self):
         try:
             return self.email.split('@')[1]
         except IndexError:
             return None
+
+    def didyoumean(self):
+        from emailpie.spelling import correct
+        items = self.domain.split('.')
+        return '{0}@{1}'.format(self.username, '.'.join(map(correct, items)))
 
     @property
     def checks(self):
@@ -78,7 +87,8 @@ class EmailChecker(object):
             gevent.joinall(results)
 
             for result in results:
-                self.errors += result.value
+                if result.value:
+                    self.errors += result.value
         else:
             for result in [check() for check in self.checks]:
                 self.errors += result

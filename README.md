@@ -5,11 +5,13 @@ Give us an email and we make sure its legit. If not, you'll find out why.
 
 ### Features
 
+* Uses gevent for fastness.
 * Normal regex based check.
 * Ensures DNS records exist for the mail exchange.
-* TODO: Simple telnet check for IMAP or SMTP (http://www.webdigi.co.uk/blog/2009/how-to-check-if-an-email-address-exists-without-sending-an-email/)
-* TODO: Suggest fixes to common misspellings. lulz@gnail.com -> did you mean lulz@**gmail**.com.
-* TODO: Throttle requests by IP (redis based).
+* Suggest fixes to common misspellings. lulz@gnail.com -> did you mean lulz@**gmail**.com.
+* **TODO:** Simple telnet check for IMAP or SMTP (http://www.webdigi.co.uk/blog/2009/how-to-check-if-an-email-address-exists-without-sending-an-email/)
+* **TODO:** Fix timeout failure...
+* **TODO:** Throttle requests by IP (redis based).
 
 
 ### Install/Usage

@@ -4,6 +4,7 @@ monkey.patch_all()
 import unittest
 
 from emailpie import utils
+from emailpie.spelling import correct
 
 
 class TestParse(unittest.TestCase):
@@ -36,6 +37,18 @@ class TestParse(unittest.TestCase):
         errors = validator.validate()
 
         self.assertTrue(errors)
+
+    def test_mispelled_domain(self):
+        validator = utils.EmailChecker('bryan@gnail.con')
+        self.assertEquals('bryan@gmail.com', validator.didyoumean())
+
+
+class SpellingTest(unittest.TestCase):
+    def test_simple_mispell(self):
+        self.assertEquals('gmail', correct('gnail'))
+        self.assertEquals('yahoo', correct('uahoo'))
+        self.assertEquals('sakjfh', correct('sakjfh'))
+        self.assertEquals('guess', correct('guess'))
 
 
 if __name__ == '__main__':
