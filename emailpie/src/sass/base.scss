@@ -4,9 +4,11 @@
 .fancy {
     font-family: 'Coming Soon', cursive;
 }
-
 .small {
   font-size:12px;
+}
+.clear {
+  clear:both;
 }
 
 body {
@@ -54,5 +56,22 @@ body {
     @include border-radius(6px);
     margin:0 auto;
     width:230px;
+  }
+
+  form {
+    .field {
+      float:left;
+
+      input {
+        border:1px solid #ccc;
+        padding:5px 8px;
+        font-size:14px;
+        width:414px;
+        @include border-radius(6px);
+      }
+    }
+    .submit {
+      float:right;
+    }
   }
 }
