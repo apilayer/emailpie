@@ -40,8 +40,39 @@
   <p>It's free for now, but we limit API calls to 1800/hour. Or, <a href="https://github.com/bryanhelmig/emailpie">run your own</a>.</p>
 
 
-  <h2>Example Code</h2>
-  <p>We strive to make our service very, very easy to use. Try some of these examples below for whatever your favorite language.</p>
+  <h2>Examples</h2>
+
+  <table class="table table-bordered table-striped small">
+    <thead>
+      <tr>
+        <td>Email</td>
+        <td>Problem?</td>
+        <td>Link</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>some.guy@gmail.com</td>
+        <td>none!</td>
+        <td><a href="/v1/check?email=some.guy@gmail.com">json</a></td>
+      </tr>
+      <tr>
+        <td>i.am@invalid.com@for.sure</td>
+        <td>invalid</td>
+        <td><a href="/v1/check?email=i.am@invalid.com@for.sure">json</a></td>
+      </tr>
+      <tr>
+        <td>another.guy@gnail.com</td>
+        <td>mispelled gmail</td>
+        <td><a href="/v1/check?email=some.guy@gnail.com">json</a></td>
+      </tr>
+      <tr>
+        <td>fella5@adsferarytk.com</td>
+        <td>bogus domain</td>
+        <td><a href="/v1/check?email=fella5@adsferarytk.com">json</a></td>
+      </tr>
+    </tbody>
+  </table>
 
 
   <h2>Python</h2>
