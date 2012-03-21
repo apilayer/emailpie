@@ -2,6 +2,8 @@
 
 Give us an email and we make sure its legit. If not, you'll find out why.
 
+Check it out live at http://emailpie.com/
+
 
 ### Features
 
@@ -9,12 +11,14 @@ Give us an email and we make sure its legit. If not, you'll find out why.
 * Normal regex based check.
 * Ensures DNS records exist for the mail exchange.
 * Suggest fixes to common misspellings. lulz@gnail.com -> did you mean lulz@**gmail**.com.
+* Throttled requests by IP (redis based).
 * **TODO:** Simple telnet check for IMAP or SMTP (http://www.webdigi.co.uk/blog/2009/how-to-check-if-an-email-address-exists-without-sending-an-email/)
 * **TODO:** Fix timeout failure...
-* **TODO:** Throttle requests by IP (redis based).
 
 
 ### Install/Usage
+
+**Make sure redis is installed and running on the standard ports!**
 
 1. `git clone git@github.com:bryanhelmig/emailpie.git`
 2. `cd emailpie`
