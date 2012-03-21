@@ -119,6 +119,9 @@ class EmailChecker(object):
     def check_valid_email_string(self):
         """
         A simple regex based checker.
+
+        Yeah, yeah. Using Django's validator. This needs to be
+        fixed and the django dep removed.
         """
         from django.core.validators import validate_email
         from django.core.exceptions import ValidationError
