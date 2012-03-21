@@ -3,5 +3,18 @@ GEVENT_CHECKS = True
 THROTTLE_SECONDS = 60 * 60
 THROTTLE_LIMIT = 1800
 
+REDIS_HOST = 'localhost'
+REDIS_PORT = None
+REDIS_DB = None
+
+
+try:
+    from settings_local import *
+except ImportError:
+    pass
+
 import redis
-cache = redis.StrictRedis(host='localhost', port=6380, db=13)
+cache = redis.StrictRedis(
+    host=REDIS_HOST,
+    port=REDIS_PORT,
+    db=REDIS_DB)

@@ -1,1 +1,2 @@
 *.pyc
+emailpie/settings_local.py
