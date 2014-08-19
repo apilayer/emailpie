@@ -2,8 +2,6 @@
 
 Give us an email and we make sure its legit. If not, you'll find out why.
 
-Check it out live at http://emailpie.com/
-
 
 ### Features
 
