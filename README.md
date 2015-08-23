@@ -2,6 +2,7 @@ We are happy to announce that the Free Email Pie API has now been integrated int
 
 You can resume your free API access [signing up here](https://mailboxlayer.com). 
 
+______________
 
 # A simple email validation API.
 
