@@ -1,3 +1,5 @@
+## Important Notice
+
 We are happy to announce that the Free Email Pie API has now been integrated into the [mailboxlayer API](https://mailboxlayer.com).
 
 You can resume your free API access [signing up here](https://mailboxlayer.com). 
